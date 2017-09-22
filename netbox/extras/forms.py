@@ -166,4 +166,4 @@ class ImageAttachmentForm(BootstrapMixin, forms.ModelForm):
 
     class Meta:
         model = ImageAttachment
-        fields = ['name', 'image']
+        fields = ['name', 'image', 'front_view']

@@ -353,6 +353,7 @@ class ImageAttachment(models.Model):
     image_height = models.PositiveSmallIntegerField()
     image_width = models.PositiveSmallIntegerField()
     name = models.CharField(max_length=50, blank=True)
+    front_view = models.BooleanField(default=False, verbose_name='Use as front view image in rack')
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -811,7 +811,6 @@ class Device(CreatedUpdatedModel, CustomFieldModel):
     comments = models.TextField(blank=True)
     custom_field_values = GenericRelation(CustomFieldValue, content_type_field='obj_type', object_id_field='obj_id')
     images = GenericRelation(ImageAttachment)
-
     objects = DeviceManager()
 
     csv_headers = [
@@ -829,6 +828,15 @@ class Device(CreatedUpdatedModel, CustomFieldModel):
 
     def __str__(self):
         return self.display_name or super(Device, self).__str__()
+
+    @property
+    def get_front_view_image(self):
+        front_view_image = self.images.filter(front_view=True)[0]
+        if front_view_image:
+            print front_view_image.image.url
+            return front_view_image
+        else:
+            return False
 
     def get_absolute_url(self):
         return reverse('dcim:device', args=[self.pk])
