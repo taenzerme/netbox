@@ -833,7 +833,6 @@ class Device(CreatedUpdatedModel, CustomFieldModel):
     def get_front_view_image(self):
         front_view_image = self.images.filter(front_view=True)[0]
         if front_view_image:
-            print front_view_image.image.url
             return front_view_image
         else:
             return False
